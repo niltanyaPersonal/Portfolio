@@ -9,8 +9,7 @@ export const profile = {
   availability: "Hybrid availability · Available ASAP",
   cvFile: "/Nil-Tanya-Mateu-CV.pdf",
   github: "https://github.com/niltanyaPersonal",
-  // Add your LinkedIn URL here to show the LinkedIn link across the site.
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/nil-ta%C3%B1a-mateu-9b1856228/",
   siteUrl: "https://niltanya.dev",
 };
 
