@@ -5,7 +5,10 @@ import SectionTitle from "../components/SectionTitle";
 import Reveal from "../components/Reveal";
 
 export default function Experience() {
-  usePageTitle("Experience");
+  usePageTitle(
+    "Experience",
+    "Professional experience of Nil Taña Mateu: systems and developer roles at Hercal Diggers and CVS Tot Ordinadors, teaching at Codelearn — plus education and certifications from Cisco, Oracle and Microsoft."
+  );
 
   return (
     <>
@@ -108,7 +111,7 @@ export default function Experience() {
           </Reveal>
           <ul className="mt-12 grid gap-4 sm:grid-cols-2">
             {certifications.map((cert, i) => (
-              <Reveal key={cert} delay={i * 80} as="li">
+              <Reveal key={cert.name} delay={i * 80} as="li">
                 <div className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-5 transition hover:border-accent/40 hover:bg-mist">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ice text-accent">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -116,7 +119,10 @@ export default function Experience() {
                       <path d="M8.5 14L7 21l5-2.5L17 21l-1.5-7" />
                     </svg>
                   </span>
-                  <p className="text-sm font-semibold text-ink">{cert}</p>
+                  <div>
+                    <p className="text-sm font-semibold text-ink">{cert.name}</p>
+                    <p className="mt-0.5 text-xs font-medium text-steel-dark">{cert.issuer}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}

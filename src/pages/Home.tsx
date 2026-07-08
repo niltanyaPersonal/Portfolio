@@ -29,11 +29,15 @@ export default function Home() {
               </p>
             </Reveal>
             <Reveal delay={100}>
-              <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-[3.4rem] lg:leading-[1.1]">
-                Hi, I'm{" "}
+              <p className="mt-6 font-mono text-sm text-accent-soft">
+                Hi, I'm <span className="font-semibold text-white">Nil Taña Mateu</span> — {profile.location}
+              </p>
+              <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-[3.2rem] lg:leading-[1.12]">
+                I build and run the{" "}
                 <span className="bg-gradient-to-r from-accent-soft to-sky-400 bg-clip-text text-transparent">
-                  Nil Taña Mateu
+                  systems businesses depend on
                 </span>
+                .
               </h1>
               <p className="mt-4 font-mono text-sm text-steel sm:text-base">{profile.title}</p>
             </Reveal>
@@ -46,31 +50,31 @@ export default function Home() {
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link
                   to="/projects"
-                  className="rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent-soft"
+                  className="rounded-lg bg-accent px-7 py-3 text-sm font-semibold text-white transition hover:bg-accent-soft"
                 >
                   View Projects
-                </Link>
-                <Link
-                  to="/about"
-                  className="rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-accent hover:text-accent-soft"
-                >
-                  About Me
-                </Link>
-                <Link
-                  to="/contact"
-                  className="rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-accent hover:text-accent-soft"
-                >
-                  Contact
                 </Link>
                 <a
                   href={profile.cvFile}
                   download
-                  className="inline-flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-semibold text-steel transition hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-accent hover:text-accent-soft"
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" />
                   </svg>
                   Download CV
+                </a>
+                <a
+                  href={profile.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub profile"
+                  className="inline-flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-semibold text-steel transition hover:text-white"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.36 9.36 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.25 10.25 0 0022 12.25C22 6.58 17.52 2 12 2z" />
+                  </svg>
+                  GitHub
                 </a>
               </div>
             </Reveal>

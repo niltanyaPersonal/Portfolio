@@ -6,7 +6,10 @@ import ProjectCard from "../components/ProjectCard";
 import Reveal from "../components/Reveal";
 
 export default function Projects() {
-  usePageTitle("Projects");
+  usePageTitle(
+    "Projects",
+    "Real websites, dashboards and web apps built for businesses: TAMA Studios Dashboard, Clínica Veterinaria Cantabria, Inmobiliaria Sant Quirze, Xavi Tanya Serveis Integrals and Tot Pizza."
+  );
   const [filter, setFilter] = useState<"All" | ProjectCategory>("All");
 
   const visible = filter === "All" ? projects : projects.filter((p) => p.category === filter);

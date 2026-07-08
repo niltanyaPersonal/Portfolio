@@ -7,7 +7,10 @@ import ContactForm from "../components/ContactForm";
 import CopyEmailButton from "../components/CopyEmailButton";
 
 export default function Contact() {
-  usePageTitle("Contact");
+  usePageTitle(
+    "Contact",
+    "Contact Nil Taña Mateu — open to junior IT, systems, cybersecurity and web development roles in Barcelona (hybrid), and to building websites and web apps for businesses."
+  );
 
   return (
     <>
@@ -30,6 +33,10 @@ export default function Contact() {
               Open to IT, systems, cybersecurity and web development
               opportunities — and to building websites and web apps for
               businesses.
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-steel">
+              I reply within 24 hours. Hiring for junior IT, systems or web
+              roles in Barcelona (hybrid)? Let's talk.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <CopyEmailButton />

@@ -5,7 +5,10 @@ import Reveal from "../components/Reveal";
 import SkillIcon from "../components/SkillIcon";
 
 export default function Skills() {
-  usePageTitle("Skills");
+  usePageTitle(
+    "Skills",
+    "Technical skills of Nil Taña Mateu: Windows Server, Linux, TCP/IP, DNS, DHCP, VPN, Active Directory, SQL, PL/SQL, Oracle DB, Docker, cybersecurity and web development."
+  );
 
   return (
     <>

@@ -1,13 +1,17 @@
 export const profile = {
   name: "Nil Taña Mateu",
-  title: "Computer Engineering Student · IT Systems & Networks · Web Developer",
+  title: "Computer Engineering Student · IT Systems & Networks · Cybersecurity · Web Developer",
   tagline:
-    "I build clean, functional and professional web solutions while combining a strong background in systems administration, networking and cybersecurity.",
+    "I've shipped five production websites and apps for real businesses — from a bilingual clinic website to an offline-first field app for a construction company — combining web development with a solid base in systems administration, networking and cybersecurity.",
   email: "nil.tanya1@gmail.com",
   phone: "+34 620 032 469",
   location: "Barcelona",
   availability: "Hybrid availability · Available ASAP",
   cvFile: "/Nil-Tanya-Mateu-CV.pdf",
+  github: "https://github.com/niltanyaPersonal",
+  // Add your LinkedIn URL here to show the LinkedIn link across the site.
+  linkedin: "",
+  siteUrl: "https://niltanya.dev",
 };
 
 export interface SkillGroup {
@@ -172,9 +176,14 @@ export const education: EducationItem[] = [
   },
 ];
 
-export const certifications: string[] = [
-  "IT Essentials: PC Hardware and Software",
-  "Database Programming with PL/SQL",
-  "Database Design & Programming with SQL",
-  "Windows Server 2019 Administration",
+export interface Certification {
+  name: string;
+  issuer: string;
+}
+
+export const certifications: Certification[] = [
+  { name: "IT Essentials: PC Hardware and Software", issuer: "Cisco Networking Academy" },
+  { name: "Database Programming with PL/SQL", issuer: "Oracle Academy" },
+  { name: "Database Design & Programming with SQL", issuer: "Oracle Academy" },
+  { name: "Windows Server 2019 Administration", issuer: "Microsoft" },
 ];

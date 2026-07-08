@@ -39,7 +39,10 @@ const solutions = [
 ];
 
 export default function About() {
-  usePageTitle("About");
+  usePageTitle(
+    "About",
+    "Computer Engineering student and IT Systems & Networks technician in Barcelona. A hybrid profile combining systems administration, networking, cybersecurity and web development."
+  );
 
   return (
     <>
@@ -55,13 +58,17 @@ export default function About() {
           <Reveal>
             <div className="space-y-5 text-base leading-relaxed text-steel-dark sm:text-lg">
               <p className="text-xl font-semibold text-ink sm:text-2xl">
-                I'm a Computer Engineering student and IT Systems & Networks
-                graduate based in Barcelona.
+                Most developers know code. Most sysadmins know servers. I work
+                in both worlds.
               </p>
               <p>
-                I have practical experience with Linux and Windows Server
-                environments, system administration, networking, cybersecurity,
-                troubleshooting and web application development.
+                I can configure the Windows Server your business runs on, secure
+                the network it lives in, and build the web app your team uses
+                every day. I'm a Computer Engineering student and IT Systems &
+                Networks graduate based in Barcelona, with practical experience
+                in Linux and Windows Server environments, system administration,
+                networking, cybersecurity, troubleshooting and web application
+                development.
               </p>
               <p>
                 I enjoy building clean, functional and well-structured digital

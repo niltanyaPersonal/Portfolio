@@ -5,6 +5,11 @@ export type ProjectCategory =
   | "Landing Pages"
   | "Demo Concepts";
 
+export interface ProjectHighlight {
+  value: string;
+  label: string;
+}
+
 export interface Project {
   slug: string;
   name: string;
@@ -17,7 +22,10 @@ export interface Project {
   problem: string;
   features: string[];
   technologies: string[];
+  highlights: ProjectHighlight[];
   accent: string;
+  /** Static screenshot (in /public) shown instead of the live iframe — used for apps behind a login. */
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -45,7 +53,13 @@ export const projects: Project[] = [
       "Dark / light theme and responsive layout",
     ],
     technologies: ["JavaScript", "Vite", "Supabase", "HTML5", "CSS3"],
+    highlights: [
+      { value: "3", label: "business areas: commercial, production, post-sale" },
+      { value: "15+", label: "views and modules" },
+      { value: "Real-time", label: "data sync with Supabase" },
+    ],
     accent: "#2563eb",
+    image: "/previews/tama-dashboard.png",
   },
   {
     slug: "clinica-veterinaria-cantabria",
@@ -71,6 +85,11 @@ export const projects: Project[] = [
       "Pure HTML5 + CSS3 + JavaScript — no build step, deploys anywhere",
     ],
     technologies: ["HTML5", "CSS3", "JavaScript", "i18n", "GitHub Pages"],
+    highlights: [
+      { value: "2", label: "languages: Catalan and Spanish" },
+      { value: "14", label: "content sections" },
+      { value: "0", label: "frameworks — pure HTML, CSS and JS" },
+    ],
     accent: "#0ea5e9",
   },
   {
@@ -97,6 +116,11 @@ export const projects: Project[] = [
       "Frontend on Vercel, CMS backend on Render",
     ],
     technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Strapi CMS"],
+    highlights: [
+      { value: "Full-stack", label: "Next.js frontend + Strapi CMS backend" },
+      { value: "4", label: "property search filters" },
+      { value: "100%", label: "listings managed from the CMS" },
+    ],
     accent: "#f59e0b",
   },
   {
@@ -106,7 +130,7 @@ export const projects: Project[] = [
     category: "Web Apps",
     url: "https://xavitanya.vercel.app/",
     description:
-      "Progressive web app for a construction and integral services company: employee time tracking, work-site management, warehouse stock, work reports and PDF invoicing — usable on site, even offline.",
+      "Offline-first PWA a construction crew uses daily on site: clock-ins, work-site management, warehouse stock, work reports and PDF invoicing — replacing paper entirely.",
     objective:
       "Digitalize the daily operations of a construction company: clock-ins, active work sites, material stock, daily work reports and invoicing — from any phone, directly on site.",
     role:
@@ -123,7 +147,13 @@ export const projects: Project[] = [
       "Mobile-first interface designed for use on site",
     ],
     technologies: ["React", "Vite", "Tailwind CSS", "Supabase", "jsPDF", "PWA"],
+    highlights: [
+      { value: "Offline-first", label: "keeps working without signal on site" },
+      { value: "12", label: "modules, from clock-ins to invoicing" },
+      { value: "PDF", label: "invoices and reports generated in-app" },
+    ],
     accent: "#f97316",
+    image: "/previews/xavi-tanya.png",
   },
   {
     slug: "tot-pizza-concept",
@@ -149,6 +179,11 @@ export const projects: Project[] = [
       "Pure HTML5 + CSS3 + JavaScript — fast and dependency-free",
     ],
     technologies: ["HTML5", "CSS3", "JavaScript", "SEO", "i18n"],
+    highlights: [
+      { value: "4", label: "languages: ES, CA, EN and FR" },
+      { value: "Local SEO", label: "geo tags, Open Graph and sitemap" },
+      { value: "1 tap", label: "to reserve via WhatsApp or phone" },
+    ],
     accent: "#ef4444",
   },
 ];

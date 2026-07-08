@@ -6,11 +6,15 @@ const DESIGN_WIDTH = 1280;
 const ASPECT = 16 / 10;
 
 /**
- * Browser-frame preview showing the real live website in miniature,
- * via a scaled-down, non-interactive iframe.
+ * Browser-frame preview of a project. Shows a static screenshot when the
+ * project defines one (apps behind a login), otherwise the real live site
+ * in miniature via a scaled, non-interactive iframe. If the screenshot
+ * file is missing it falls back to the live preview.
  */
 export default function BrowserMockup({ project }: { project: Project }) {
   const host = new URL(project.url).host;
+  const [imageFailed, setImageFailed] = useState(false);
+  const useImage = Boolean(project.image) && !imageFailed;
 
   return (
     <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
@@ -25,7 +29,19 @@ export default function BrowserMockup({ project }: { project: Project }) {
           {host}
         </span>
       </div>
-      <LiveFrame url={project.url} name={project.name} accent={project.accent} />
+      {useImage ? (
+        <div className="relative w-full overflow-hidden bg-slate-50" style={{ aspectRatio: `${ASPECT}` }}>
+          <img
+            src={project.image}
+            alt={`Screenshot of ${project.name}`}
+            loading="lazy"
+            onError={() => setImageFailed(true)}
+            className="absolute inset-0 h-full w-full object-cover object-top"
+          />
+        </div>
+      ) : (
+        <LiveFrame url={project.url} name={project.name} accent={project.accent} />
+      )}
     </div>
   );
 }

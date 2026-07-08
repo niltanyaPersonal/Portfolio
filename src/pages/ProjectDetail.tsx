@@ -8,7 +8,7 @@ import NotFound from "./NotFound";
 export default function ProjectDetail() {
   const { slug } = useParams();
   const project = slug ? getProject(slug) : undefined;
-  usePageTitle(project?.name ?? "Project not found");
+  usePageTitle(project?.name ?? "Project not found", project?.description);
 
   if (!project) return <NotFound />;
 
@@ -72,6 +72,22 @@ export default function ProjectDetail() {
             <div className="translate-y-[-3rem]">
               <BrowserMockup project={project} />
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Highlights ---------- */}
+      <section className="bg-white pt-4 pb-2">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <Reveal>
+            <dl className="grid gap-4 sm:grid-cols-3">
+              {project.highlights.map((h) => (
+                <div key={h.label} className="rounded-xl border border-slate-200 bg-mist p-5">
+                  <dt className="order-2 mt-1 text-sm leading-snug text-steel-dark">{h.label}</dt>
+                  <dd className="text-2xl font-extrabold tracking-tight text-navy-900">{h.value}</dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
         </div>
       </section>
