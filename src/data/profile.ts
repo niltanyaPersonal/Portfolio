@@ -16,6 +16,8 @@ export const profile = {
 export interface SkillGroup {
   title: string;
   icon: string;
+  /** One honest line about where these skills have actually been used. */
+  context: string;
   skills: string[];
 }
 
@@ -23,11 +25,13 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Operating Systems",
     icon: "os",
+    context: "Installed, configured and maintained in real internships and personal labs.",
     skills: ["Windows Server", "Linux", "macOS (basic)"],
   },
   {
     title: "Systems Administration",
     icon: "sysadmin",
+    context: "Day-to-day administration at Hercal Diggers: users, permissions, maintenance, incident resolution.",
     skills: [
       "System installation",
       "Configuration",
@@ -39,32 +43,37 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Networking",
     icon: "network",
+    context: "Configured and troubleshot in company environments and hands-on course labs.",
     skills: ["TCP/IP", "DNS", "DHCP", "VPN", "Active Directory"],
   },
   {
     title: "Databases",
     icon: "database",
+    context: "Oracle Academy certified — applied in coursework and in the data models of my apps.",
     skills: ["SQL", "PL/SQL", "Oracle DB"],
   },
   {
     title: "Development",
     icon: "code",
+    context: "Where I ship: five production projects for real businesses, from vanilla JS to Next.js.",
     skills: [
       "Web applications",
       "Dashboards",
       "Business websites",
       "Landing pages",
-      "Basic programming",
+      "JavaScript / TypeScript",
     ],
   },
   {
     title: "Containers",
     icon: "container",
+    context: "Familiar through personal experiments and coursework — comfortable reading and running compose setups.",
     skills: ["Docker (familiar)"],
   },
   {
     title: "Cybersecurity",
     icon: "security",
+    context: "Trained in my ASIX degree with hands-on labs — applied in my apps via auth, MFA and Row Level Security.",
     skills: [
       "Cybersecurity fundamentals",
       "Security labs",
@@ -75,6 +84,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Soft Skills",
     icon: "soft",
+    context: "Forged in support roles, teaching programming and customer-facing work under pressure.",
     skills: [
       "Problem solving",
       "Analytical thinking",
@@ -84,6 +94,40 @@ export const skillGroups: SkillGroup[] = [
       "Working under pressure",
     ],
   },
+];
+
+/* ---------- Recruiter Mode ---------- */
+
+export const recruiterMode = {
+  dayOne: [
+    "Production experience: five real deployments for real businesses — I've already shipped, maintained and fixed things people depend on.",
+    "A hybrid profile: I can hold a support queue in the morning and ship a web feature in the afternoon.",
+    "Security mindset by default: authentication, MFA and database-level security applied in my own projects, not just studied.",
+    "Low ramp-up: used to learning fast, documenting what I do and asking the right questions early.",
+  ],
+  roles: [
+    "IT Technician / Help Desk",
+    "Junior Systems Administrator",
+    "NOC / SOC Analyst (junior)",
+    "Junior Web Developer",
+    "IT Support & Infrastructure",
+  ],
+  languages: ["Spanish", "Catalan", "English"],
+};
+
+/* ---------- Proof of Work ---------- */
+
+export const proofStats = [
+  { value: "5", label: "production projects live right now" },
+  { value: "4", label: "certifications — Cisco, Oracle, Microsoft" },
+  { value: "3", label: "technical roles in real companies" },
+  { value: "1", label: "engineering degree in progress at UOC" },
+];
+
+export const currentlyInTheLab = [
+  "Degree in Computer Engineering at UOC — in progress",
+  "Deepening cybersecurity practice beyond my ASIX training labs",
+  "This portfolio: React + TypeScript + Tailwind, open source on GitHub",
 ];
 
 export interface ExperienceItem {

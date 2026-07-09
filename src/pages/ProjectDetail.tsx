@@ -121,6 +121,19 @@ export default function ProjectDetail() {
                 ))}
               </ul>
             </Reveal>
+            <Reveal>
+              <h2 className="text-2xl font-bold text-ink">What I learned</h2>
+              <ul className="mt-5 space-y-4">
+                {project.learnings.map((lesson) => (
+                  <li
+                    key={lesson}
+                    className="rounded-xl border-l-2 border-accent bg-mist p-5 text-sm leading-relaxed text-steel-dark"
+                  >
+                    {lesson}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
 
           {/* Sidebar */}

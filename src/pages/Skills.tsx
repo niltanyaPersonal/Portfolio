@@ -30,7 +30,10 @@ export default function Skills() {
                     </span>
                     <h2 className="text-base font-bold text-ink">{group.title}</h2>
                   </div>
-                  <ul className="mt-5 space-y-2.5">
+                  <p className="mt-4 border-l-2 border-accent/30 pl-3 text-xs leading-relaxed text-steel-dark">
+                    {group.context}
+                  </p>
+                  <ul className="mt-4 space-y-2.5">
                     {group.skills.map((skill) => (
                       <li key={skill} className="flex items-center gap-2.5 text-sm text-steel-dark">
                         <span className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />

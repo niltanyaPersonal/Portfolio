@@ -23,6 +23,8 @@ export interface Project {
   features: string[];
   technologies: string[];
   highlights: ProjectHighlight[];
+  /** Honest takeaways — what building this actually taught me. */
+  learnings: string[];
   accent: string;
   /** Static screenshot (in /public) shown instead of the live iframe — used for apps behind a login. */
   image?: string;
@@ -58,6 +60,11 @@ export const projects: Project[] = [
       { value: "15+", label: "views and modules" },
       { value: "Real-time", label: "data sync with Supabase" },
     ],
+    learnings: [
+      "Designing the data model before touching the UI saves days of rework later.",
+      "Real-time sync forces you to think seriously about state: who owns the data, when it refreshes, what happens on conflict.",
+      "If I started over, I'd introduce TypeScript from day one — a project this size outgrows plain JavaScript fast.",
+    ],
     accent: "#2563eb",
     image: "/previews/tama-dashboard.png",
   },
@@ -90,6 +97,11 @@ export const projects: Project[] = [
       { value: "14", label: "content sections" },
       { value: "0", label: "frameworks — pure HTML, CSS and JS" },
     ],
+    learnings: [
+      "Frameworks are optional; discipline isn't. Building i18n and an admin panel in vanilla JS taught me more about the DOM than any library.",
+      "Designing for a non-technical client changes everything: content must be editable without touching code.",
+      "Legal pages and cookie consent aren't an afterthought — real businesses need them from day one.",
+    ],
     accent: "#0ea5e9",
   },
   {
@@ -120,6 +132,11 @@ export const projects: Project[] = [
       { value: "Full-stack", label: "Next.js frontend + Strapi CMS backend" },
       { value: "4", label: "property search filters" },
       { value: "100%", label: "listings managed from the CMS" },
+    ],
+    learnings: [
+      "First full-stack project with a headless CMS: modelling content in Strapi is as much design work as the UI itself.",
+      "Coordinating two deployments (frontend on Vercel, CMS on Render) taught me to think about environments, env vars and CORS properly.",
+      "Handling media through Cloudinary beats storing images in the repo — in size, speed and workflow.",
     ],
     accent: "#f59e0b",
   },
@@ -152,6 +169,11 @@ export const projects: Project[] = [
       { value: "12", label: "modules, from clock-ins to invoicing" },
       { value: "PDF", label: "invoices and reports generated in-app" },
     ],
+    learnings: [
+      "Offline-first changes how you architect everything: connectivity becomes an enhancement, not an assumption.",
+      "Database-level security (Row Level Security) is worth the setup cost — the UI can fail, the data stays protected.",
+      "Designing for gloves-on, sunlight, on-site mobile use is a different discipline from desktop UI.",
+    ],
     accent: "#f97316",
     image: "/previews/xavi-tanya.png",
   },
@@ -183,6 +205,11 @@ export const projects: Project[] = [
       { value: "4", label: "languages: ES, CA, EN and FR" },
       { value: "Local SEO", label: "geo tags, Open Graph and sitemap" },
       { value: "1 tap", label: "to reserve via WhatsApp or phone" },
+    ],
+    learnings: [
+      "SEO is engineering: structured data, hreflang and metadata are code with measurable effects, not marketing fluff.",
+      "Maintaining four languages by hand taught me exactly why i18n tooling exists.",
+      "A landing page has one job — every section either pushes toward the reservation or it's noise.",
     ],
     accent: "#ef4444",
   },

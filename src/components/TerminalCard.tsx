@@ -1,20 +1,51 @@
 import { useEffect, useState } from "react";
 
 const lines = [
-  { prompt: "nil@barcelona:~$", command: "whoami", output: ["Computer Engineering Student · IT Systems & Networks"] },
-  { prompt: "nil@barcelona:~$", command: "cat skills.txt", output: ["sysadmin · networking · cybersecurity · web-dev"] },
-  { prompt: "nil@barcelona:~$", command: "systemctl status nil.service", output: ["● active (running) — available ASAP · hybrid"] },
+  { command: "whoami", output: ["Computer Engineering Student · IT Systems & Networks"] },
+  { command: "cat skills.txt", output: ["sysadmin · networking · cybersecurity · web-dev"] },
+  { command: "systemctl status nil.service", output: ["● active (running) — available ASAP · hybrid"] },
 ];
 
-/** Animated terminal window shown in the Home hero. */
+const PROMPT = "nil@barcelona:~$";
+const TYPE_SPEED_MS = 45;
+const OUTPUT_DELAY_MS = 350;
+const LINE_PAUSE_MS = 650;
+
+/** Animated terminal window shown in the Home hero — types each command out. */
 export default function TerminalCard() {
-  const [visible, setVisible] = useState(0);
+  const [lineIdx, setLineIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [outputShown, setOutputShown] = useState(false);
+  const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
-    if (visible >= lines.length) return;
-    const timer = setTimeout(() => setVisible((v) => v + 1), visible === 0 ? 500 : 900);
-    return () => clearTimeout(timer);
-  }, [visible]);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setReduced(true);
+      setLineIdx(lines.length);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (reduced || lineIdx >= lines.length) return;
+    const current = lines[lineIdx];
+
+    if (charIdx < current.command.length) {
+      const t = setTimeout(() => setCharIdx((c) => c + 1), TYPE_SPEED_MS);
+      return () => clearTimeout(t);
+    }
+    if (!outputShown) {
+      const t = setTimeout(() => setOutputShown(true), OUTPUT_DELAY_MS);
+      return () => clearTimeout(t);
+    }
+    const t = setTimeout(() => {
+      setLineIdx((l) => l + 1);
+      setCharIdx(0);
+      setOutputShown(false);
+    }, LINE_PAUSE_MS);
+    return () => clearTimeout(t);
+  }, [reduced, lineIdx, charIdx, outputShown]);
+
+  const done = lineIdx >= lines.length;
 
   return (
     <div className="overflow-hidden rounded-xl border border-white/10 bg-navy-900/80 shadow-2xl shadow-navy-950/60 backdrop-blur">
@@ -26,11 +57,12 @@ export default function TerminalCard() {
         </span>
         <span className="ml-2 font-mono text-xs text-steel">nil@barcelona — zsh</span>
       </div>
-      <div className="min-h-[240px] space-y-3 p-5 font-mono text-[13px] leading-relaxed sm:text-sm">
-        {lines.slice(0, visible).map((line, i) => (
+      <div className="min-h-[240px] space-y-3 p-5 font-mono text-[13px] leading-relaxed sm:text-sm" aria-live="off">
+        {/* Completed lines */}
+        {lines.slice(0, lineIdx).map((line, i) => (
           <div key={i}>
             <p>
-              <span className="text-emerald-400">{line.prompt}</span>{" "}
+              <span className="text-emerald-400">{PROMPT}</span>{" "}
               <span className="text-white">{line.command}</span>
             </p>
             {line.output.map((out, j) => (
@@ -38,9 +70,26 @@ export default function TerminalCard() {
             ))}
           </div>
         ))}
-        {visible >= lines.length && (
+
+        {/* Line currently being typed */}
+        {!done && (
+          <div>
+            <p>
+              <span className="text-emerald-400">{PROMPT}</span>{" "}
+              <span className="text-white">{lines[lineIdx].command.slice(0, charIdx)}</span>
+              {!outputShown && <span className="terminal-caret" />}
+            </p>
+            {outputShown &&
+              lines[lineIdx].output.map((out, j) => (
+                <p key={j} className="text-steel">{out}</p>
+              ))}
+          </div>
+        )}
+
+        {/* Idle prompt when finished */}
+        {done && (
           <p>
-            <span className="text-emerald-400">nil@barcelona:~$</span> <span className="terminal-caret" />
+            <span className="text-emerald-400">{PROMPT}</span> <span className="terminal-caret" />
           </p>
         )}
       </div>

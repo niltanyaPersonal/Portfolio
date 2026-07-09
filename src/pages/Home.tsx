@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { usePageTitle } from "../hooks/usePageTitle";
-import { profile, skillGroups } from "../data/profile";
+import { profile } from "../data/profile";
 import { projects } from "../data/projects";
 import Reveal from "../components/Reveal";
 import TerminalCard from "../components/TerminalCard";
 import SectionTitle from "../components/SectionTitle";
 import ProjectCard from "../components/ProjectCard";
 import SkillIcon from "../components/SkillIcon";
+import ProofOfWork from "../components/ProofOfWork";
+import RecruiterMode from "../components/RecruiterMode";
 
 export default function Home() {
   usePageTitle();
@@ -33,11 +35,11 @@ export default function Home() {
                 Hi, I'm <span className="font-semibold text-white">Nil Taña Mateu</span> — {profile.location}
               </p>
               <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-[3.2rem] lg:leading-[1.12]">
-                I build and run the{" "}
+                I build it. I{" "}
                 <span className="bg-gradient-to-r from-accent-soft to-sky-400 bg-clip-text text-transparent">
-                  systems businesses depend on
-                </span>
-                .
+                  secure
+                </span>{" "}
+                it. I keep it running.
               </h1>
               <p className="mt-4 font-mono text-sm text-steel sm:text-base">{profile.title}</p>
             </Reveal>
@@ -164,44 +166,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Skills preview ---------- */}
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <Reveal>
-            <SectionTitle
-              eyebrow="stack"
-              title="Technical foundations"
-              description="From operating systems and networking to databases and development."
-            />
-          </Reveal>
-          <div className="mt-12 flex flex-wrap gap-2.5">
-            {skillGroups
-              .filter((g) => g.icon !== "soft")
-              .flatMap((g) => g.skills)
-              .map((skill, i) => (
-                <Reveal key={skill} delay={Math.min(i * 30, 400)} as="div">
-                  <span className="inline-block rounded-lg border border-slate-200 bg-white px-3.5 py-2 font-mono text-xs text-ink transition hover:border-accent hover:text-accent">
-                    {skill}
-                  </span>
-                </Reveal>
-              ))}
-          </div>
-          <Reveal delay={200}>
-            <Link
-              to="/skills"
-              className="mt-10 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition hover:text-accent-soft"
-            >
-              Full skill set
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14m-6-6l6 6-6 6" />
-              </svg>
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+      {/* ---------- Proof of Work ---------- */}
+      <ProofOfWork />
+
+      {/* ---------- Recruiter Mode ---------- */}
+      <RecruiterMode />
 
       {/* ---------- CTA ---------- */}
-      <section className="relative overflow-hidden bg-navy-900 py-24">
+      <section className="relative overflow-hidden border-t border-white/5 bg-navy-950 py-24">
         <div className="grid-backdrop absolute inset-0" aria-hidden="true" />
         <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
           <Reveal>

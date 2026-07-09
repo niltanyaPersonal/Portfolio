@@ -24,7 +24,8 @@ export default function Contact() {
         <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
             <p className="font-mono text-sm font-medium text-accent-soft">
-              <span aria-hidden="true">// </span>contact
+              <span className="text-emerald-400">$</span> init contact --with nil{" "}
+              <span className="terminal-caret" aria-hidden="true" />
             </p>
             <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Let's build something professional together.
